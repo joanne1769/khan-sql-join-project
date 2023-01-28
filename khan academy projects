@@ -1,0 +1,32 @@
+create table GOT_characters (id integer primary key autoincrement, name text, episode_apperance integer);
+insert into GOT_characters (name, episode_apperance) values ("Edgar Stark",1);
+insert into GOT_characters (name, episode_apperance) values ("Ayra Stark", 1);
+insert into GOT_characters (name, episode_apperance) values ("Tyrion Lannister", 1);
+insert into GOT_characters (name, episode_apperance) values ("Twyin Lannister", 8);
+Insert into GOT_characters (name, episode_apperance) values ("Brandon Stark", 1);
+Insert into GOT_characters (name, episode_apperance) values ("Robert Stark", 1);
+Insert into GOT_characters (name, episode_apperance) values ("Jon Snow", 1);
+Insert into GOT_characters (name, episode_apperance) values ("Sansa Stark", 1);
+Insert into GOT_characters (name, episode_apperance) values ("Rikard Stark", 1);
+Insert into GOT_characters (name, episode_apperance) values ("Samuel Tally", 5);
+ 
+create table Stark_direwolf (id integer primary key autoincrement, character_id integer, name text);
+insert into Stark_direwolf ( character_id, name) values (2, "Namira");
+insert into Stark_direwolf ( character_id, name) values (5, "Summer");
+insert into Stark_direwolf ( character_id, name) values (6, "Grey Wind");
+insert into Stark_direwolf ( character_id, name) values (7, "Ghost");
+insert into Stark_direwolf ( character_id, name) values (8, "Lady");
+insert into Stark_direwolf ( character_id, name) values (9, "Shaggy Dog");
+
+
+select * from GOT_characters;
+select * from Stark_direwolf;
+select GOT_characters.name, Stark_direwolf.name from GOT_characters join Stark_direwolf on GOT_characters.id=Stark_direwolf.character_id;
+
+Create table GOT_deaths ( id integer primary  key autoincrement, character_id integer, episode_death integer);
+insert into GOT_deaths ( character_id, episode_death) values (1, 1.9);
+insert into GOT_deaths (character_id, episode_death) Values ( 4, 3.1);
+insert into GOT_deaths (character_id, episode_death) values (6, 2.5);
+insert into GOT_deaths (character_id, episode_death) values (9, 7.7);
+
+select GOT_characters.name, GOT_deaths.episode_death as season_episode from GOT_characters left outer join GOT_deaths on GOT_characters.id=GOT_deaths.character_id;
